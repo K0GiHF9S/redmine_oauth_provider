@@ -2,7 +2,7 @@
 
 == Requirements
 
-Redmine 2.3 or later
+Redmine 4.0.x
 
 == Installation
 

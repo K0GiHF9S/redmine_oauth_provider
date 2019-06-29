@@ -1,1 +1,1 @@
-gem "oauth-plugin", "~> 0.5.1"
+gem "oauth-plugin", git: "https://github.com/K0GiHF9S/oauth-plugin.git"

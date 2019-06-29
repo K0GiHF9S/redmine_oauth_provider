@@ -1,8 +1,8 @@
 class OauthClientsController < ApplicationController
   unloadable
 
-  before_filter :get_user
-  before_filter :get_client_application, :only => [:show, :edit, :update, :destroy]
+  before_action :get_user
+  before_action :get_client_application, :only => [:show, :edit, :update, :destroy]
 
   def index
     @client_applications = @user.client_applications
@@ -14,7 +14,7 @@ class OauthClientsController < ApplicationController
   end
 
   def create
-    @client_application = @user.client_applications.build(params[:client_application])
+    @client_application = @user.client_applications.build(client_application_params)
     if @client_application.save
       flash[:notice] = l("Registered the information successfully")
       redirect_to :action => "show", :id => @client_application.id
@@ -30,7 +30,7 @@ class OauthClientsController < ApplicationController
   end
 
   def update
-    if @client_application.update_attributes(params[:client_application])
+    if @client_application.update_attributes(client_application_params)
       flash[:notice] = l("Updated the client information successfully")
       redirect_to :action => "show", :id => @client_application.id
     else
@@ -65,5 +65,9 @@ class OauthClientsController < ApplicationController
       flash.now[:error] = l("Wrong application id")
       raise ActiveRecord::RecordNotFound
     end
+  end
+
+  def client_application_params
+    params.require(:client_application).permit(:name, :url, :callback_url, :support_url)
   end
 end

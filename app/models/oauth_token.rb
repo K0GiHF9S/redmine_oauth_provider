@@ -6,7 +6,6 @@ class OauthToken < ActiveRecord::Base
   validates_uniqueness_of :token
   validates_presence_of :client_application, :token
   before_validation :generate_keys, :on => :create
-  attr_accessible :client_application, :callback_url
 
   def invalidated?
     invalidated_at != nil

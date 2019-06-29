@@ -3,7 +3,6 @@
 class OauthNonce < ActiveRecord::Base
   unloadable
 
-  attr_accessible :nonce, :timestamp
   validates_presence_of :nonce, :timestamp
   validates_uniqueness_of :nonce, :scope => :timestamp
 
