@@ -3,7 +3,7 @@ class ClientApplication < ActiveRecord::Base
   unloadable
 
   belongs_to :user
-  has_many :tokens, :class_name => "OauthToken"
+  has_many :tokens, class_name: "OauthToken"
   has_many :access_tokens
   has_many :oauth2_verifiers
   has_many :oauth_tokens

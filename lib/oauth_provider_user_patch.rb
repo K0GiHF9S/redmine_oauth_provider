@@ -5,7 +5,7 @@ module OauthProviderUserPatch
       unloadable
 
       has_many :client_applications
-      has_many :tokens, -> {includes(:client_application).order("authorized_at desc")}, {:class_name => "OauthToken"}
+      has_many :tokens, -> {includes(:client_application).order("authorized_at desc")}, class_name: "OauthToken"
     end
   end
 end
